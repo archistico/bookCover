@@ -47,53 +47,52 @@
         <h1>Dimensioni</h1>
       </div>
       <div class="row">
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="exportPDF.php" method="get">
           <div class="form-group">
             <label for="inputLarghezza" class="col-sm-2 control-label">Larghezza pagina</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="inputLarghezza" placeholder="Larghezza in mm">
+              <input type="number" name="larghezza" class="form-control" id="inputLarghezza" placeholder="Larghezza in mm">
             </div>
           </div>
           <div class="form-group">
             <label for="inputAltezza" class="col-sm-2 control-label">Altezza pagina</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="inputAltezza" placeholder="Altezza in mm">
+              <input type="number" name="altezza" class="form-control" id="inputAltezza" placeholder="Altezza in mm">
             </div>
           </div>
           <div class="form-group">
             <label for="inputLarghezzaDorso" class="col-sm-2 control-label">Larghezza dorso</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="inputLarghezzaDorso" placeholder="Larghezza dorso/costa in mm">
+              <input type="number" name="dorso" class="form-control" id="inputLarghezzaDorso" placeholder="Larghezza dorso/costa in mm">
             </div>
           </div>
           <div class="form-group">
             <label for="inputSmarginatura" class="col-sm-2 control-label">Smarginatura</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="inputSmarginatura" placeholder="Smarginatura in mm">
+              <input type="number" name="smarginatura" class="form-control" id="inputSmarginatura" placeholder="Smarginatura in mm">
             </div>
           </div>
           <div class="form-group">
             <label for="inputCordonatura" class="col-sm-2 control-label">Cordonatura</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="inputCordonatura" placeholder="Cordonatura in mm">
+              <input type="number" name="cordonatura" class="form-control" id="inputCordonatura" placeholder="Cordonatura in mm">
             </div>
           </div>
           <div class="form-group">
             <label for="inputMargineInterno" class="col-sm-2 control-label">Margine interno</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="inputMargineInterno" placeholder="Margine interno in mm">
+              <input type="number" name="margineInterno" class="form-control" id="inputMargineInterno" placeholder="Margine interno in mm">
             </div>
           </div>
           <div class="form-group">
             <label for="inputDPI" class="col-sm-2 control-label">DPI</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="inputDPI" placeholder="DPI (300 normale)">
+              <input type="number" name="DPI" class="form-control" id="inputDPI" placeholder="DPI (300 normale)">
             </div>
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
               <button type="submit" class="btn btn-primary"> Export to PDF</button>
-              <button type="submit" class="btn btn-primary"> Export to JPG</button>
             </div>
           </div>
         </form>
