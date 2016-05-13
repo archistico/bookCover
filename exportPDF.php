@@ -23,6 +23,9 @@ else {
 }
 $pdf->AddPage();
 
+//setta il nero
+$pdf->SetDrawColor(0,0,0);
+
 // Rettangolo copertina con smarginatura
 $pdf->Rect($cordonatura, $cordonatura, $copertinaLarghezza-2*$cordonatura, $copertinaAltezza-2*$cordonatura, 'D');
 
@@ -35,11 +38,24 @@ $pdf->Rect($cordonatura+$smarginatura+$larghezza+$dorso, $cordonatura+$smarginat
 // Rettangolo dorso
 $pdf->Rect($cordonatura+$smarginatura+$larghezza, $cordonatura+$smarginatura, $dorso, $altezza, 'D');
 
+//setta il rosso
+$pdf->SetDrawColor(255,0,0);
+
+// Rettangolo di taglio
+// Rettagolo pagina Quarta
+$pdf->Rect($cordonatura+$smarginatura, $cordonatura+$smarginatura, $copertinaLarghezza-2*($cordonatura+$smarginatura), $copertinaAltezza-2*($cordonatura+$smarginatura), 'D');
+
+//setta il verde
+$pdf->SetDrawColor(0,255,0);
+
 // Margini di sicurezza quarta
 $pdf->Rect($cordonatura+$smarginatura+$margineInterno, $cordonatura+$smarginatura+$margineInterno, $larghezza-2*$margineInterno, $altezza-2*$margineInterno, 'D');
 
 // Margini di sicurezza prima
 $pdf->Rect($cordonatura+$smarginatura+$larghezza+$dorso+$margineInterno, $cordonatura+$smarginatura+$margineInterno, $larghezza-2*$margineInterno, $altezza-2*$margineInterno, 'D');
+
+//setta il nero
+$pdf->SetDrawColor(0,0,0);
 
 // Linee lato sopra
 $pdf->Line($cordonatura+$smarginatura, 0, $cordonatura+$smarginatura,$cordonatura);
