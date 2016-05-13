@@ -67,15 +67,15 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="inputSmarginatura" class="col-sm-2 control-label">Smarginatura</label>
+            <label for="inputAbbondanza" class="col-sm-2 control-label">Abbondanza</label>
             <div class="col-sm-10">
-              <input type="number" name="smarginatura" class="form-control" id="inputSmarginatura" placeholder="Smarginatura in mm">
+              <input type="number" name="abbondanza" class="form-control" id="inputAbbondanza" placeholder="Abbondanza in mm">
             </div>
           </div>
           <div class="form-group">
-            <label for="inputCordonatura" class="col-sm-2 control-label">Cordonatura</label>
+            <label for="inputTaglio" class="col-sm-2 control-label">Segni di taglio</label>
             <div class="col-sm-10">
-              <input type="number" name="cordonatura" class="form-control" id="inputCordonatura" placeholder="Cordonatura in mm">
+              <input type="number" name="taglio" class="form-control" id="inputTaglio" placeholder="Lunghezza segni di taglio in mm">
             </div>
           </div>
           <div class="form-group">
