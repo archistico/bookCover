@@ -24,17 +24,22 @@ else {
 $pdf->AddPage();
 
 // Rettangolo copertina con smarginatura
-// Rect(float x, float y, float w, float h [, string style])
 $pdf->Rect($cordonatura, $cordonatura, $copertinaLarghezza-2*$cordonatura, $copertinaAltezza-2*$cordonatura, 'D');
 
-// Rettangolo taglio
-$pdf->Rect($cordonatura+$smarginatura, $cordonatura+$smarginatura, $copertinaLarghezza-2*($cordonatura+$smarginatura), $copertinaAltezza-2*($cordonatura+$smarginatura), 'D');
+// Rettagolo pagina Quarta
+$pdf->Rect($cordonatura+$smarginatura, $cordonatura+$smarginatura, $larghezza, $altezza, 'D');
+
+// Rettagolo pagina Prima
+$pdf->Rect($cordonatura+$smarginatura+$larghezza+$dorso, $cordonatura+$smarginatura, $larghezza, $altezza, 'D');
 
 // Rettangolo dorso
 $pdf->Rect($cordonatura+$smarginatura+$larghezza, $cordonatura+$smarginatura, $dorso, $altezza, 'D');
 
-// Linee di taglio
-// Line(float x1, float y1, float x2, float y2)
+// Margini di sicurezza quarta
+$pdf->Rect($cordonatura+$smarginatura+$margineInterno, $cordonatura+$smarginatura+$margineInterno, $larghezza-2*$margineInterno, $altezza-2*$margineInterno, 'D');
+
+// Margini di sicurezza prima
+$pdf->Rect($cordonatura+$smarginatura+$larghezza+$dorso+$margineInterno, $cordonatura+$smarginatura+$margineInterno, $larghezza-2*$margineInterno, $altezza-2*$margineInterno, 'D');
 
 // Linee lato sopra
 $pdf->Line($cordonatura+$smarginatura, 0, $cordonatura+$smarginatura,$cordonatura);
@@ -56,10 +61,17 @@ $pdf->Line( 0, $copertinaAltezza-$cordonatura-$smarginatura, $cordonatura, $cope
 $pdf->Line( $copertinaLarghezza-$cordonatura, $cordonatura+$smarginatura, $copertinaLarghezza, $cordonatura+$smarginatura);
 $pdf->Line( $copertinaLarghezza-$cordonatura, $copertinaAltezza-$cordonatura-$smarginatura, $copertinaLarghezza, $copertinaAltezza-$cordonatura-$smarginatura);
 
-
 // Setta il font
 $pdf->SetFont('Arial','B',10);
-$pdf->Cell(100,10,'Dimensioni: '. $copertinaLarghezza . 'x' . $copertinaAltezza);
+// Muoviti internamente nella zona margini
+$pdf->Text($cordonatura+$smarginatura+$margineInterno+5,$cordonatura+$smarginatura+$margineInterno+10,'Dimensioni totali: '. $copertinaLarghezza . 'x' . $copertinaAltezza . ' mm');
+$pdf->Text($cordonatura+$smarginatura+$margineInterno+5,$cordonatura+$smarginatura+$margineInterno+15,'Dimensione pagina: '. $larghezza . 'x' . $altezza . ' mm');
+$pdf->Text($cordonatura+$smarginatura+$margineInterno+5,$cordonatura+$smarginatura+$margineInterno+20,'Larghezza dorso: '. $dorso . ' mm');
+$pdf->Text($cordonatura+$smarginatura+$margineInterno+5,$cordonatura+$smarginatura+$margineInterno+25,'Larghezza smarginatura: '. $smarginatura . ' mm');
+$pdf->Text($cordonatura+$smarginatura+$margineInterno+5,$cordonatura+$smarginatura+$margineInterno+30,'Larghezza cordonatura: '. $cordonatura . ' mm');
+$pdf->SetFont('Arial','B',20);
+$pdf->Text($cordonatura+$smarginatura+$larghezza/2-5,$cordonatura+$smarginatura+$altezza/2+5,'IV');
+$pdf->Text($cordonatura+$smarginatura+$dorso+$larghezza+$larghezza/2-15,$cordonatura+$smarginatura+$altezza/2+5,'TITOLO');
 
 // Chiusura PDF
 ob_end_clean();
