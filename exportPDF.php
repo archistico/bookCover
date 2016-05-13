@@ -34,6 +34,27 @@ $pdf->Rect($cordonatura+$smarginatura, $cordonatura+$smarginatura, $copertinaLar
 $pdf->Rect($cordonatura+$smarginatura+$larghezza, $cordonatura+$smarginatura, $dorso, $altezza, 'D');
 
 // Linee di taglio
+// Line(float x1, float y1, float x2, float y2)
+
+// Linee lato sopra
+$pdf->Line($cordonatura+$smarginatura, 0, $cordonatura+$smarginatura,$cordonatura);
+$pdf->Line($cordonatura+$smarginatura+$larghezza, 0, $cordonatura+$smarginatura+$larghezza,$cordonatura);
+$pdf->Line($cordonatura+$smarginatura+$larghezza+$dorso, 0, $cordonatura+$smarginatura+$larghezza+$dorso,$cordonatura);
+$pdf->Line($cordonatura+$smarginatura+2*$larghezza+$dorso, 0, $cordonatura+$smarginatura+2*$larghezza+$dorso,$cordonatura);
+
+// Linee lato sotto
+$pdf->Line($cordonatura+$smarginatura, $copertinaAltezza-$cordonatura, $cordonatura+$smarginatura,$copertinaAltezza);
+$pdf->Line($cordonatura+$smarginatura+$larghezza, $copertinaAltezza-$cordonatura, $cordonatura+$smarginatura+$larghezza,$copertinaAltezza);
+$pdf->Line($cordonatura+$smarginatura+$larghezza+$dorso, $copertinaAltezza-$cordonatura, $cordonatura+$smarginatura+$larghezza+$dorso,$copertinaAltezza);
+$pdf->Line($cordonatura+$smarginatura+2*$larghezza+$dorso, $copertinaAltezza-$cordonatura, $cordonatura+$smarginatura+2*$larghezza+$dorso,$copertinaAltezza);
+
+// Linee sinistra
+$pdf->Line( 0, $cordonatura+$smarginatura, $cordonatura, $cordonatura+$smarginatura);
+$pdf->Line( 0, $copertinaAltezza-$cordonatura-$smarginatura, $cordonatura, $copertinaAltezza-$cordonatura-$smarginatura);
+
+// Linee destra
+$pdf->Line( $copertinaLarghezza-$cordonatura, $cordonatura+$smarginatura, $copertinaLarghezza, $cordonatura+$smarginatura);
+$pdf->Line( $copertinaLarghezza-$cordonatura, $copertinaAltezza-$cordonatura-$smarginatura, $copertinaLarghezza, $copertinaAltezza-$cordonatura-$smarginatura);
 
 
 // Setta il font
