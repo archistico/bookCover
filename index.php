@@ -29,18 +29,25 @@
       <div class="page-header">
         <h1>Seleziona il tipo di copertina</h1>
       </div>
-
-      <div class="radio">
-        <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-          Copertina senza alette
-        </label>
-      </div>
-      <div class="radio disabled">
-        <label>
-          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-          Copertina con alette
-        </label>
+      
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+              Copertina senza alette/bandelle
+            </label>
+          </div>
+          <div class="radio disabled">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+              Copertina con alette/bandelle
+            </label>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <img src="img/coverExample.png" class="img-responsive" alt="Copertina senza alette">
+        </div>
       </div>
 
       <div class="page-header">
