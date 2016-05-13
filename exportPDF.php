@@ -27,6 +27,14 @@ $pdf->AddPage();
 // Rect(float x, float y, float w, float h [, string style])
 $pdf->Rect($cordonatura, $cordonatura, $copertinaLarghezza-2*$cordonatura, $copertinaAltezza-2*$cordonatura, 'D');
 
+// Rettangolo taglio
+$pdf->Rect($cordonatura+$smarginatura, $cordonatura+$smarginatura, $copertinaLarghezza-2*($cordonatura+$smarginatura), $copertinaAltezza-2*($cordonatura+$smarginatura), 'D');
+
+// Rettangolo dorso
+$pdf->Rect($cordonatura+$smarginatura+$larghezza, $cordonatura+$smarginatura, $dorso, $altezza, 'D');
+
+// Linee di taglio
+
 
 // Setta il font
 $pdf->SetFont('Arial','B',10);
