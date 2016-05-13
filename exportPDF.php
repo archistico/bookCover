@@ -91,5 +91,5 @@ $pdf->Text($taglio+$abbondanza+$dorso+$larghezza+$larghezza/2-15,$taglio+$abbond
 
 // Chiusura PDF
 ob_end_clean();
-$pdf->Output();
+$pdf->Output('I', 'Cover '.$larghezza . 'x' . $altezza . ' mm'.'.pdf');
 ?>
