@@ -26,35 +26,37 @@
                 <p>Export to PDF or JPG</p>
             </div>
 
-            <div class="page-header">
-                <h1>Seleziona il tipo di copertina</h1>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                            Copertina senza alette/bandelle
-                        </label>
-                    </div>
-                    <div class="radio disabled">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                            Copertina con alette/bandelle
-                        </label>
-                    </div>
-                </div>
-                <div class="col-xs-6">
-                    <img src="img/coverExample.png" class="img-responsive" alt="Copertina senza alette">
-                </div>
-            </div>
-
-            <div class="page-header">
-                <h1>Dimensioni</h1>
-            </div>
             <div class="row">
                 <form class="form-horizontal" action="exportPDF.php" method="get">
+
+                    <div class="page-header">
+                        <h1>Seleziona il tipo di copertina</h1>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="tipologia" id="senzaAlette" value="0" checked>
+                                    Copertina senza alette/bandelle
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="tipologia" id="conAlette" value="1">
+                                    Copertina con alette/bandelle
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <img src="img/coverExample.png" class="img-responsive" alt="Copertina senza alette">
+                        </div>
+                    </div>
+
+                    <div class="page-header">
+                        <h1>Dimensioni</h1>
+                    </div>
+
                     <div class="form-group">
                         <label for="inputLarghezza" class="col-sm-2 control-label">Larghezza pagina</label>
                         <div class="col-sm-10">
@@ -89,6 +91,12 @@
                         <label for="inputMargineInterno" class="col-sm-2 control-label">Margine interno</label>
                         <div class="col-sm-10">
                             <input type="number" name="margineInterno" class="form-control" id="inputMargineInterno" placeholder="Margine interno in mm">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputAletta" class="col-sm-2 control-label">Larghezza alette</label>
+                        <div class="col-sm-10">
+                            <input type="number" name="aletta" class="form-control" id="inputAletta" placeholder="Larghezza aletta/bandella in mm">
                         </div>
                     </div>
                     <div class="form-group">
