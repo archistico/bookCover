@@ -7,6 +7,12 @@ $dorso = $_GET["dorso"];
 $abbondanza = $_GET["abbondanza"];
 $taglio = $_GET["taglio"];
 $margineInterno = $_GET["margineInterno"];
+if(isset($_GET['stampaInfo'])) {
+    $stampaInfo = true;
+} else {
+    $stampaInfo = false;
+}
+
 $DPI = $_GET["DPI"];
 
 $copertinaLarghezza = $larghezza * 2 + $dorso + $abbondanza * 2 + $taglio * 2;
@@ -79,12 +85,14 @@ $pdf->Line( $copertinaLarghezza-$taglio, $copertinaAltezza-$taglio-$abbondanza, 
 
 // Setta il font
 $pdf->SetFont('Arial','B',10);
-// Muoviti internamente nella zona margini
-$pdf->Text($taglio+$abbondanza+$margineInterno+5,$taglio+$abbondanza+$margineInterno+10,'Dimensioni totali: '. $copertinaLarghezza . 'x' . $copertinaAltezza . ' mm');
-$pdf->Text($taglio+$abbondanza+$margineInterno+5,$taglio+$abbondanza+$margineInterno+15,'Dimensione pagina: '. $larghezza . 'x' . $altezza . ' mm');
-$pdf->Text($taglio+$abbondanza+$margineInterno+5,$taglio+$abbondanza+$margineInterno+20,'Larghezza dorso: '. $dorso . ' mm');
-$pdf->Text($taglio+$abbondanza+$margineInterno+5,$taglio+$abbondanza+$margineInterno+25,'Larghezza abbondanza: '. $abbondanza . ' mm');
-$pdf->Text($taglio+$abbondanza+$margineInterno+5,$taglio+$abbondanza+$margineInterno+30,'Segni di taglio: '. $taglio . ' mm');
+if($stampaInfo == true) {
+    // Muoviti internamente nella zona margini
+    $pdf->Text($taglio+$abbondanza+$margineInterno+5,$taglio+$abbondanza+$margineInterno+10,'Dimensioni totali: '. $copertinaLarghezza . 'x' . $copertinaAltezza . ' mm');
+    $pdf->Text($taglio+$abbondanza+$margineInterno+5,$taglio+$abbondanza+$margineInterno+15,'Dimensione pagina: '. $larghezza . 'x' . $altezza . ' mm');
+    $pdf->Text($taglio+$abbondanza+$margineInterno+5,$taglio+$abbondanza+$margineInterno+20,'Larghezza dorso: '. $dorso . ' mm');
+    $pdf->Text($taglio+$abbondanza+$margineInterno+5,$taglio+$abbondanza+$margineInterno+25,'Larghezza abbondanza: '. $abbondanza . ' mm');
+    $pdf->Text($taglio+$abbondanza+$margineInterno+5,$taglio+$abbondanza+$margineInterno+30,'Segni di taglio: '. $taglio . ' mm');
+}
 $pdf->SetFont('Arial','B',20);
 $pdf->Text($taglio+$abbondanza+$larghezza/2-5,$taglio+$abbondanza+$altezza/2+5,'IV');
 $pdf->Text($taglio+$abbondanza+$dorso+$larghezza+$larghezza/2-15,$taglio+$abbondanza+$altezza/2+5,'TITOLO');
