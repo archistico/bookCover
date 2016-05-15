@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="bookcoverApp">
+<html lang="it" ng-app="bookcoverApp">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Base copertina">
+        <meta name="keywords" content="PDF, base, linee, copertina, cover, lines, export, margin">
+        <meta name="author" content="Emilie Rollandin">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Make a book cover</title>
@@ -25,8 +28,8 @@
 
             <!-- Main jumbotron for a primary marketing message or call to action -->
             <div class="jumbotron">
-                <h1>Make a book cover</h1>
-                <p>Export to PDF</p>
+                <h1>LINEE BASE COPERTINA</h1>
+                <p>Vengono create le linee base della copertina su di un file PDF</p>
             </div>
 
             <div class="row">
@@ -99,7 +102,7 @@
                     <div class="form-group">
                         <label for="inputAletta" class="col-sm-2 control-label">Larghezza alette</label>
                         <div class="col-sm-10">
-                            <input type="number" name="aletta" class="form-control" id="inputAletta" placeholder="Larghezza aletta/bandella in mm" min="0" max="2000" required>
+                            <input type="number" name="aletta" class="form-control" id="inputAletta" placeholder="Larghezza aletta/bandella in mm (0 se non ci sono)" min="0" max="2000" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -113,7 +116,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary"> Export to PDF</button>
+                            <button type="submit" class="btn btn-primary btn-block btn-lg"> CREA IL PDF</button>
                         </div>
                     </div>
                 </form>
