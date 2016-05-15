@@ -118,7 +118,39 @@
                     </div>
                 </form>
             </div> <!-- Fine row del form -->
-        </div> <!-- Fine div container -->
+            
+            <div class="page-header">
+                <h1>Ultime 10 copertine create</h1>
+                <p>Totale :  <?php require('SQLconta.php'); SQLconta(); ?></p>
+            </div> 
+            
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Tipologia</th>
+                                <th>Larghezza</th>
+                                <th>Altezza</th>
+                                <th>Dorso</th>
+                                <th>Abbondanza</th>
+                                <th>Taglio</th>
+                                <th>Alette</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            // Visualizza lista ultime 10 copertine
+                            require('SQLvisualizza.php');
+                            SQLvisualizza();
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div> <!-- Fine div container -->              
 
         <footer class="footer">
             <div class="container">

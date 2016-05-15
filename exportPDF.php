@@ -219,5 +219,10 @@ if ($tipologia == "0") {
     // Chiusura PDF
     ob_end_clean();
     $pdf->Output('I', 'Cover con alette '.$larghezza.'x'.$altezza.' mm - dorso '.$dorso.' mm.pdf');
-}
+}   
+
+// Aggiunge riga nel DB
+require('SQLaggiungi.php');
+SQLaggiungi($tipologia, $larghezza, $altezza, $dorso, $abbondanza, $taglio, $margineInterno, $aletta);
+
 ?>

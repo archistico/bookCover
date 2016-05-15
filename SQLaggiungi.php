@@ -1,6 +1,6 @@
 <?php
 
-function aggiungi($tip, $lar, $alt, $dor, $abb, $tag, $mar, $ale) {
+function SQLaggiungi($tip, $lar, $alt, $dor, $abb, $tag, $mar, $ale) {
     try {
 
         // Create (connect to) SQLite database in file
@@ -67,36 +67,6 @@ function aggiungi($tip, $lar, $alt, $dor, $abb, $tag, $mar, $ale) {
             // Execute statement
             $stmt->execute();
         }
-
-        // Close file db connection
-        $file_db = null;
-    } catch (PDOException $e) {
-        // Print PDOException message
-        echo $e->getMessage();
-    }
-}
-
-function visualizza() {
-    try {
-        // Create (connect to) SQLite database in file
-        $file_db = new PDO('sqlite:copertine.sqlite3');
-        // Set errormode to exceptions
-        $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        // Select all data from memory db messages table 
-        $result = $file_db->query('SELECT * FROM copertine');
-
-        foreach ($result as $row) {
-            echo "Id: " . $row['id'] . "\n" . "</br>";
-            echo "Tipologia: " . $row['tipologia'] . "\n" . "</br>";
-            echo "Larghezza: " . $row['larghezza'] . "\n" . "</br>";
-            echo "Altezza: " . $row['altezza'] . "\n" . "</br>";
-            echo "\n" . "</br>" . "</br>";
-        }
-
-        // Conta il numero di copertine create
-        $resultset = $file_db->query("SELECT COUNT(*) FROM copertine");
-        echo "Numero copertine: " . $resultset->fetchColumn();
 
         // Close file db connection
         $file_db = null;
