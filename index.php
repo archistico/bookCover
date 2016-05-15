@@ -31,13 +31,13 @@
 
             <div class="row">
                 <form class="form-horizontal" action="exportPDF.php" method="get">
-
+                    
                     <div class="page-header">
                         <h1>Seleziona il tipo di copertina</h1>
                     </div>
-
+                    
                     <div class="row">
-                        <div class="col-xs-4">
+                        <div class="col-xs-6 col-md-4">
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="tipologia" id="senzaAlette" ng-value="0" ng-model="tipologia.selezionato" checked>
@@ -51,7 +51,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="col-xs-8">
+                        <div class="col-xs-12 col-sm-6 col-md-8">
                             <img src="{{immagine}}" class="img-responsive" alt="Copertina senza alette">
                         </div>
                     </div>

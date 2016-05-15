@@ -104,6 +104,8 @@ if ($tipologia == "0") {
     $pdf->SetFont('Arial', 'B', 20);
     $pdf->Text($taglio + $abbondanza + $larghezza / 2 - 5, $taglio + $abbondanza + $altezza / 2 + 5, 'IV');
     $pdf->Text($taglio + $abbondanza + $dorso + $larghezza + $larghezza / 2 - 15, $taglio + $abbondanza + $altezza / 2 + 5, 'TITOLO');
+    $pdf->SetFont('Arial', 'I', 10);
+    $pdf->Text($taglio + $abbondanza + $dorso + $larghezza + $larghezza / 2 - 18, $taglio + $abbondanza + $altezza / 2 + 10, 'www.archistico.com');
 
     // Chiusura PDF
     ob_end_clean();
@@ -206,10 +208,13 @@ if ($tipologia == "0") {
         $pdf->Text($taglio + $abbondanza + $margineInterno + 5 + $aletta, $taglio + $abbondanza + $margineInterno + 20, 'Larghezza dorso: ' . $dorso . ' mm');
         $pdf->Text($taglio + $abbondanza + $margineInterno + 5 + $aletta, $taglio + $abbondanza + $margineInterno + 25, 'Larghezza abbondanza: ' . $abbondanza . ' mm');
         $pdf->Text($taglio + $abbondanza + $margineInterno + 5 + $aletta, $taglio + $abbondanza + $margineInterno + 30, 'Segni di taglio: ' . $taglio . ' mm');
+        $pdf->Text($taglio + $abbondanza + $margineInterno + 5 + $aletta, $taglio + $abbondanza + $margineInterno + 35, 'Aletta: ' . $aletta . ' mm');
     }
     $pdf->SetFont('Arial', 'B', 20);
     $pdf->Text($taglio + $abbondanza + $larghezza / 2 - 5 + $aletta, $taglio + $abbondanza + $altezza / 2 + 5, 'IV');
     $pdf->Text($taglio + $abbondanza + $dorso + $larghezza + $larghezza / 2 - 15 + $aletta, $taglio + $abbondanza + $altezza / 2 + 5, 'TITOLO');
+    $pdf->SetFont('Arial', 'I', 10);
+    $pdf->Text($taglio + $abbondanza + $dorso + $larghezza + $larghezza / 2 - 18 + $aletta, $taglio + $abbondanza + $altezza / 2 + 10, 'www.archistico.com');
 
     // Chiusura PDF
     ob_end_clean();
