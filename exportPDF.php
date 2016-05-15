@@ -18,7 +18,7 @@ if (isset($_GET['aletta'])) {
 } else {
     $aletta = 0;
 }
-$DPI = $_GET["DPI"];
+//$DPI = $_GET["DPI"];
 
 
 if ($tipologia == "0") {

@@ -111,14 +111,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--
-                    <div class="form-group">
-                      <label for="inputDPI" class="col-sm-2 control-label">DPI</label>
-                      <div class="col-sm-10">
-                        <input type="number" name="DPI" class="form-control" id="inputDPI" placeholder="DPI (300 normale)">
-                      </div>
-                    </div>
-                    -->
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-primary"> Export to PDF</button>

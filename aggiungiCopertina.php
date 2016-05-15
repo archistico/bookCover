@@ -21,75 +21,79 @@
  
     // Create table messages
     $file_db->exec("CREATE TABLE IF NOT EXISTS copertine (
-                    id INTEGER PRIMARY KEY, 
+                    id INTEGER PRIMARY KEY,
+                    tipologia INTEGER,
                     larghezza INTEGER, 
                     altezza INTEGER, 
                     dorso INTEGER, 
                     abbondanza INTEGER, 
                     taglio INTEGER, 
-                    margineInterno INTEGER)");
+                    margine INTEGER,
+                    aletta INTEGER)");
  
     /**************************************
     * Set initial data                    *
     **************************************/
  
     // Array with some test data to insert to database             
-    $messages = array(
-                  array('title' => 'Hello!',
-                        'message' => 'Just testing...',
-                        'time' => 1327301464),
-                  array('title' => 'Hello again!',
-                        'message' => 'More testing...',
-                        'time' => 1339428612),
-                  array('title' => 'Hi!',
-                        'message' => 'SQLite3 is cool...',
-                        'time' => 1327214268)
+    $copertina = array(
+                  array('tipologia' => 1,
+                        'larghezza' => 150,
+                        'altezza' => 210,
+                        'dorso' => 10,
+                        'abbondanza' => 5,
+                        'taglio' => 3,
+                        'margine' => 10,
+                        'aletta' => 70
+                      )
                 );
- 
  
     /**************************************
     * Play with databases and tables      *
     **************************************/
  
     // Prepare INSERT statement to SQLite3 file db
-    $insert = "INSERT INTO messages (title, message, time) 
-                VALUES (:title, :message, :time)";
+    $insert = "INSERT INTO copertine (tipologia, larghezza, altezza, dorso, abbondanza, taglio, margine, aletta) 
+                VALUES (:tipologia, :larghezza, :altezza, :dorso, :abbondanza, :taglio, :margine, :aletta)";
     $stmt = $file_db->prepare($insert);
  
     // Bind parameters to statement variables
-    $stmt->bindParam(':title', $title);
-    $stmt->bindParam(':message', $message);
-    $stmt->bindParam(':time', $time);
+    $stmt->bindParam(':tipologia', $tipologia);
+    $stmt->bindParam(':larghezza', $larghezza);
+    $stmt->bindParam(':altezza', $altezza);
+    $stmt->bindParam(':dorso', $dorso);
+    $stmt->bindParam(':abbondanza', $abbondanza);
+    $stmt->bindParam(':taglio', $taglio);
+    $stmt->bindParam(':margine', $margine);
+    $stmt->bindParam(':aletta', $aletta);    
  
     // Loop thru all messages and execute prepared insert statement
-    foreach ($messages as $m) {
+    foreach ($copertina as $c) {
       // Set values to bound variables
-      $title = $m['title'];
-      $message = $m['message'];
-      $time = $m['time'];
- 
+      $tipologia = $c['tipologia'];
+      $larghezza = $c['larghezza'];
+      $altezza = $c['altezza'];
+      $dorso = $c['dorso'];
+      $abbondanza = $c['abbondanza'];
+      $taglio = $c['taglio'];
+      $margine = $c['margine'];
+      $aletta = $c['aletta'];
+      
       // Execute statement
       $stmt->execute();
     }
  
     // Select all data from memory db messages table 
-    $result = $memory_db->query('SELECT * FROM messages');
+    $result = $file_db->query('SELECT * FROM copertine');
  
     foreach($result as $row) {
       echo "Id: " . $row['id'] . "\n" . "</br>";
-      echo "Title: " . $row['title'] . "\n" . "</br>";
-      echo "Message: " . $row['message'] . "\n" . "</br>";
-      echo "Time: " . $row['time'] . "\n" . "</br>";
+      echo "Tipologia: " . $row['tipologia'] . "\n" . "</br>";
+      echo "Larghezza: " . $row['larghezza'] . "\n" . "</br>";
+      echo "Altezza: " . $row['altezza'] . "\n" . "</br>";
       echo "\n" . "</br>" . "</br>";
     }
-  
-    /**************************************
-    * Drop tables                         *
-    **************************************/
- 
-    // Drop table messages from file db
-    // $file_db->exec("DROP TABLE messages");
- 
+
     /**************************************
     * Close db connections                *
     **************************************/
