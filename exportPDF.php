@@ -127,7 +127,7 @@ if ($tipologia == "0") {
     $pdf->SetLineWidth(0);
     $pdf->SetFillColor(0,0,0);
     
-    for($c=0;$c<=count($aISBN);$c++){
+    for($c=0;$c<count($aISBN);$c++){
         if($aISBN[$c]==1) {
             if($c<=3 || $c>=92 || ($c>=46 && $c<=49)) {
                 $pdf->Rect($posX+$c*$Lmodulo, $posY, $Lmodulo, $Hmodulo, 'DF');
@@ -272,7 +272,7 @@ if ($tipologia == "0") {
     $pdf->SetLineWidth(0);
     $pdf->SetFillColor(0,0,0);
     
-    for($c=0;$c<=count($aISBN);$c++){
+    for($c=0;$c<count($aISBN);$c++){
         if($aISBN[$c]==1) {
             if($c<=3 || $c>=92 || ($c>=46 && $c<=49)) {
                 $pdf->Rect($posX+$c*$Lmodulo, $posY, $Lmodulo, $Hmodulo, 'DF');
