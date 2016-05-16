@@ -1,6 +1,6 @@
 <?php
 
-function SQLaggiungi($tip, $lar, $alt, $dor, $abb, $tag, $mar, $ale) {
+function SQLaggiungi($tip, $lar, $alt, $dor, $abb, $tag, $mar, $ale, $isb) {
     try {
 
         // Create (connect to) SQLite database in file
@@ -18,7 +18,8 @@ function SQLaggiungi($tip, $lar, $alt, $dor, $abb, $tag, $mar, $ale) {
                     abbondanza INTEGER, 
                     taglio INTEGER, 
                     margine INTEGER,
-                    aletta INTEGER)");
+                    aletta INTEGER,
+                    isbn INTEGER)");
 
         // Array with some test data to insert to database             
         $copertina = array(
@@ -29,17 +30,18 @@ function SQLaggiungi($tip, $lar, $alt, $dor, $abb, $tag, $mar, $ale) {
                 'abbondanza' => $abb,
                 'taglio' => $tag,
                 'margine' => $mar,
-                'aletta' => $ale
+                'aletta' => $ale,
+                'isbn' => $isb
             )
         );
 
-        /*         * ************************************
-         * Play with databases and tables      *
-         * ************************************ */
+        /**************************************
+         * Play with databases and tables     *
+         **************************************/
 
         // Prepare INSERT statement to SQLite3 file db
-        $insert = "INSERT INTO copertine (tipologia, larghezza, altezza, dorso, abbondanza, taglio, margine, aletta) 
-                VALUES (:tipologia, :larghezza, :altezza, :dorso, :abbondanza, :taglio, :margine, :aletta)";
+        $insert = "INSERT INTO copertine (tipologia, larghezza, altezza, dorso, abbondanza, taglio, margine, aletta, isbn) 
+                VALUES (:tipologia, :larghezza, :altezza, :dorso, :abbondanza, :taglio, :margine, :aletta, :isbn)";
         $stmt = $file_db->prepare($insert);
 
         // Bind parameters to statement variables
@@ -51,6 +53,7 @@ function SQLaggiungi($tip, $lar, $alt, $dor, $abb, $tag, $mar, $ale) {
         $stmt->bindParam(':taglio', $taglio);
         $stmt->bindParam(':margine', $margine);
         $stmt->bindParam(':aletta', $aletta);
+        $stmt->bindParam(':isbn', $isbn);
 
         // Loop thru all messages and execute prepared insert statement
         foreach ($copertina as $c) {
@@ -63,7 +66,8 @@ function SQLaggiungi($tip, $lar, $alt, $dor, $abb, $tag, $mar, $ale) {
             $taglio = $c['taglio'];
             $margine = $c['margine'];
             $aletta = $c['aletta'];
-
+            $isbn = $c['isbn'];
+            
             // Execute statement
             $stmt->execute();
         }

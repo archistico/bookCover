@@ -106,6 +106,12 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="inputISBN" class="col-sm-2 control-label">ISBN</br><small>Es. 9788897192602</small></label>
+                        <div class="col-sm-10">                                                                          
+                            <input type="number" name="ISBN" class="form-control" id="inputISBN" placeholder="ISBN" min="9000000000000" max="9999999999999" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="checkbox">
                                 <label>
@@ -140,6 +146,7 @@
                                 <th>Abbondanza</th>
                                 <th>Taglio</th>
                                 <th>Alette</th>
+                                <th>ISBN</th>
                             </tr>
                         </thead>
                         <tbody>

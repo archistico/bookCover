@@ -26,7 +26,8 @@ function SQLvisualizza() {
             echo "<td>" . $row['dorso'] . "</td>\n";
             echo "<td>" . $row['abbondanza'] . "</td>\n";
             echo "<td>" . $row['taglio'] . "</td>\n";
-            echo "<td>" . $row['aletta'] . "</td></tr>\n";
+            echo "<td>" . $row['aletta'] . "</td>\n";
+            echo "<td>" . $row['isbn'] . "</td></tr>\n";
         }
         
         // Close file db connection

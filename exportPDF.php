@@ -18,7 +18,7 @@ if (isset($_GET['aletta'])) {
 } else {
     $aletta = 0;
 }
-//$DPI = $_GET["DPI"];
+$ISBN = $_GET["ISBN"];
 
 
 if ($tipologia == "0") {
@@ -100,6 +100,7 @@ if ($tipologia == "0") {
         $pdf->Text($taglio + $abbondanza + $margineInterno + 5, $taglio + $abbondanza + $margineInterno + 20, 'Larghezza dorso: ' . $dorso . ' mm');
         $pdf->Text($taglio + $abbondanza + $margineInterno + 5, $taglio + $abbondanza + $margineInterno + 25, 'Larghezza abbondanza: ' . $abbondanza . ' mm');
         $pdf->Text($taglio + $abbondanza + $margineInterno + 5, $taglio + $abbondanza + $margineInterno + 30, 'Segni di taglio: ' . $taglio . ' mm');
+        //$pdf->Text($taglio + $abbondanza + $margineInterno + 5, $taglio + $abbondanza + $margineInterno + 35, 'ISBN: '.count($ISBN));
     }
     $pdf->SetFont('Arial', 'B', 20);
     $pdf->Text($taglio + $abbondanza + $larghezza / 2 - 5, $taglio + $abbondanza + $altezza / 2 + 5, 'IV');
@@ -107,6 +108,42 @@ if ($tipologia == "0") {
     $pdf->SetFont('Arial', 'I', 10);
     $pdf->Text($taglio + $abbondanza + $dorso + $larghezza + $larghezza / 2 - 18, $taglio + $abbondanza + $altezza / 2 + 10, 'www.archistico.com');
 
+    require('ISBN.php');
+    $nISBN = new ISBN();
+    $nISBN->Codifica($ISBN);
+    $aISBN = str_split($nISBN->getISBN());
+    
+    // Disegna ISBN
+    $Lmodulo = 0.35;
+    $Hmodulo = 20;
+    $bordo = 5;
+    
+    $posX = $taglio + $abbondanza + $larghezza - $margineInterno - $Lmodulo*95 - $bordo;
+    $posY = $copertinaAltezza - $taglio - $abbondanza - $margineInterno - $Hmodulo - $bordo+2;
+    
+    $pdf->SetFillColor(255,255,255);
+    $pdf->Rect($posX-$bordo, $posY-$bordo, $Lmodulo*95+2*$bordo, $Hmodulo+2*$bordo-2, 'F');
+    
+    $pdf->SetLineWidth(0);
+    $pdf->SetFillColor(0,0,0);
+    
+    for($c=0;$c<=count($aISBN);$c++){
+        if($aISBN[$c]==1) {
+            if($c<=3 || $c>=92 || ($c>=46 && $c<=49)) {
+                $pdf->Rect($posX+$c*$Lmodulo, $posY, $Lmodulo, $Hmodulo, 'DF');
+            } else {
+                $pdf->Rect($posX+$c*$Lmodulo, $posY, $Lmodulo, $Hmodulo-2, 'DF');
+            }
+        }
+    }
+    
+    $pdf->SetFont('Arial', '', 8);
+    $pdf->Text($posX-2.75, $posY+$Hmodulo+0.75, $ISBN[0]);
+    for($c=1;$c<=6;$c++) { $pdf->Text($posX+1.75+($c-1)*2.40, $posY+$Hmodulo+0.75, $ISBN[$c]); }
+    for($c=1;$c<=6;$c++) { $pdf->Text($posX+17.75+($c-1)*2.40, $posY+$Hmodulo+0.75, $ISBN[$c+6]); }
+    $pdf->SetFont('Arial', '', 8.25);
+    $pdf->Text($posX-0.25, $posY-0.5, "ISBN:  ".substr($ISBN,0,3)."-".substr($ISBN,3,2)."-".substr($ISBN,5,7)."-".substr($ISBN,12,1));
+    
     // Chiusura PDF
     ob_end_clean();
     $pdf->Output('I', 'Cover senza alette '.$larghezza.'x'.$altezza.' mm - dorso '.$dorso.' mm.pdf');
@@ -215,7 +252,43 @@ if ($tipologia == "0") {
     $pdf->Text($taglio + $abbondanza + $dorso + $larghezza + $larghezza / 2 - 15 + $aletta, $taglio + $abbondanza + $altezza / 2 + 5, 'TITOLO');
     $pdf->SetFont('Arial', 'I', 10);
     $pdf->Text($taglio + $abbondanza + $dorso + $larghezza + $larghezza / 2 - 18 + $aletta, $taglio + $abbondanza + $altezza / 2 + 10, 'www.archistico.com');
-
+    
+    require('ISBN.php');
+    $nISBN = new ISBN();
+    $nISBN->Codifica($ISBN);
+    $aISBN = str_split($nISBN->getISBN());
+    
+    // Disegna ISBN
+    $Lmodulo = 0.35;
+    $Hmodulo = 20;
+    $bordo = 5;
+    
+    $posX = $taglio + $abbondanza + $larghezza - $margineInterno - $Lmodulo*95 - $bordo + $aletta;
+    $posY = $copertinaAltezza - $taglio - $abbondanza - $margineInterno - $Hmodulo - $bordo+2;
+    
+    $pdf->SetFillColor(255,255,255);
+    $pdf->Rect($posX-$bordo, $posY-$bordo, $Lmodulo*95+2*$bordo, $Hmodulo+2*$bordo-2, 'F');
+    
+    $pdf->SetLineWidth(0);
+    $pdf->SetFillColor(0,0,0);
+    
+    for($c=0;$c<=count($aISBN);$c++){
+        if($aISBN[$c]==1) {
+            if($c<=3 || $c>=92 || ($c>=46 && $c<=49)) {
+                $pdf->Rect($posX+$c*$Lmodulo, $posY, $Lmodulo, $Hmodulo, 'DF');
+            } else {
+                $pdf->Rect($posX+$c*$Lmodulo, $posY, $Lmodulo, $Hmodulo-2, 'DF');
+            }
+        }
+    }
+    
+    $pdf->SetFont('Arial', '', 8);
+    $pdf->Text($posX-2.75, $posY+$Hmodulo+0.75, $ISBN[0]);
+    for($c=1;$c<=6;$c++) { $pdf->Text($posX+1.75+($c-1)*2.40, $posY+$Hmodulo+0.75, $ISBN[$c]); }
+    for($c=1;$c<=6;$c++) { $pdf->Text($posX+17.75+($c-1)*2.40, $posY+$Hmodulo+0.75, $ISBN[$c+6]); }
+    $pdf->SetFont('Arial', '', 8.25);
+    $pdf->Text($posX-0.25, $posY-0.5, "ISBN:  ".substr($ISBN,0,3)."-".substr($ISBN,3,2)."-".substr($ISBN,5,7)."-".substr($ISBN,12,1));
+    
     // Chiusura PDF
     ob_end_clean();
     $pdf->Output('I', 'Cover con alette '.$larghezza.'x'.$altezza.' mm - dorso '.$dorso.' mm.pdf');
@@ -223,6 +296,6 @@ if ($tipologia == "0") {
 
 // Aggiunge riga nel DB
 require('SQLaggiungi.php');
-SQLaggiungi($tipologia, $larghezza, $altezza, $dorso, $abbondanza, $taglio, $margineInterno, $aletta);
+SQLaggiungi($tipologia, $larghezza, $altezza, $dorso, $abbondanza, $taglio, $margineInterno, $aletta, $ISBN);
 
 ?>
