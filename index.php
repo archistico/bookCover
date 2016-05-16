@@ -3,12 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="Base copertina">
-        <meta name="keywords" content="PDF, base, linee, copertina, cover, lines, export, margin">
+        <meta name="description" content="Crea un PDF con le base per una copertina">
+        <meta name="keywords" content="PDF, base, linee, copertina, cover, lines, export, margin, template">
         <meta name="author" content="Emilie Rollandin">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Make a book cover</title>
+        <title>Copertina libro</title>
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -122,7 +122,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-primary btn-block btn-lg"> CREA IL PDF</button>
-                        <div class="alert alert-warning" role="alert"><strong>RICORDARSI</strong> di cancellare tutte le linee superflue e lasciare solo i segni di taglio</div>
+                        <div class="alert alert-warning" role="alert"><strong>RICORDARSI</strong> di cancellare tutte le linee superflue e di lasciare solo i segni di taglio</div>
                     </div>
                 </div>
             </form>
