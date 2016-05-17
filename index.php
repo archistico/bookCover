@@ -12,7 +12,10 @@
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-
+        
+        <!-- Personalizzazione -->
+        <link href="css/mioTema.css" rel="stylesheet">
+        
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -28,10 +31,10 @@
 
             <!-- Main jumbotron for a primary marketing message or call to action -->
             <div class="jumbotron">
-                <h1>LINEE BASE COPERTINA</h1>
+                <h1>BASE COPERTINA</h1>
                 <p>Vengono create le linee base della copertina su di un file PDF</p>
             </div>
-
+            <div class="alert alert-success" role="alert">Il file si pu&ograve; aprire per modifiche con Adobe Illustrator, Photoshop o Inkscape</div>
             <form class="form-horizontal" action="exportPDF.php" method="get">
 
                 <div class="page-header">
@@ -107,7 +110,7 @@
                 <div class="form-group">
                     <label for="inputISBN" class="col-sm-2 control-label">ISBN</br><small>Es. 9788897192602</small></label>
                     <div class="col-sm-10">                                                                          
-                        <input type="number" name="ISBN" class="form-control" id="inputISBN" placeholder="ISBN" min="9000000000000" max="9999999999999" required>
+                        <input type="number" name="ISBN" class="form-control" id="inputISBN" placeholder="ISBN - EAN 13" min="9000000000000" max="9999999999999" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -121,7 +124,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary btn-block btn-lg"> CREA IL PDF</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg"> CREA IL PDF</button></br>
                         <div class="alert alert-warning" role="alert"><strong>RICORDARSI</strong> di cancellare tutte le linee superflue e di lasciare solo i segni di taglio</div>
                     </div>
                 </div>
