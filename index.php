@@ -126,19 +126,13 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button type="submit" class="btn btn-primary btn-block btn-lg"> CREA IL PDF</button></br>
-                        <div class="alert alert-warning" role="alert"><strong>RICORDARSI</strong> di cancellare tutte le linee superflue e di lasciare solo i segni di taglio</div>
+                        <div class="alert alert-warning" role="alert"><strong>RICORDARSI</strong> prima di mandare in stampa di cancellare tutte le linee superflue e di lasciare solo i segni di taglio</div>
+                        <h3>Copertine create: <?php require('SQLconta.php'); SQLconta(); ?></h3>
                     </div>
                 </div>
             </form>
 
-            <div class="page-header">
-                <h1>Ultime 10 copertine create</h1>
-                <p>Totale :  <?php require('SQLconta.php');
-SQLconta(); ?></p>
-            </div>
-
-
-            <div class="table-responsive">
+            <div class="table-responsive" id="Tabella">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
