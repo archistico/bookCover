@@ -12,10 +12,10 @@
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
-        
+
         <!-- Personalizzazione -->
         <link href="css/mioTema.css" rel="stylesheet">
-        
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -25,6 +25,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
         <script src="js/script.js"></script>
+        <script src="js/validazione.js"></script>
     </head>
     <body role="document" ng-controller="mainController">
         <div class="container theme-showcase" role="main">
@@ -35,7 +36,7 @@
                 <p>Vengono create le linee base della copertina su di un file PDF</p>
             </div>
             <div class="alert alert-success" role="alert">Il file si pu&ograve; aprire per modifiche con Adobe Illustrator, Photoshop o Inkscape</div>
-            <form class="form-horizontal" action="exportPDF.php" method="get">
+            <form class="form-horizontal" name="formDati" action="exportPDF.php" method="get" onsubmit="return validazione()">
 
                 <div class="page-header">
                     <h1>Seleziona il tipo di copertina</h1>
@@ -68,56 +69,56 @@
                 <div class="form-group">
                     <label for="inputLarghezza" class="col-sm-2 control-label">Larghezza pagina</label>
                     <div class="col-sm-10">
-                        <input type="number" name="larghezza" class="form-control" id="inputLarghezza" placeholder="Larghezza in mm" min="0" max="2000" required>
+                        <input type="number" step="any" name="larghezza" class="form-control" id="inputLarghezza" placeholder="Larghezza in mm" min="0" max="2000" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputAltezza" class="col-sm-2 control-label">Altezza pagina</label>
                     <div class="col-sm-10">
-                        <input type="number" name="altezza" class="form-control" id="inputAltezza" placeholder="Altezza in mm" min="0" max="2000" required>
+                        <input type="number" step="any" name="altezza" class="form-control" id="inputAltezza" placeholder="Altezza in mm" min="0" max="2000" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputLarghezzaDorso" class="col-sm-2 control-label">Larghezza dorso</label>
                     <div class="col-sm-10">
-                        <input type="number" name="dorso" class="form-control" id="inputLarghezzaDorso" placeholder="Larghezza dorso/costa in mm" min="0" max="2000" required>
+                        <input type="number" step="any" name="dorso" class="form-control" id="inputLarghezzaDorso" placeholder="Larghezza dorso/costa in mm" min="0" max="2000" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputAbbondanza" class="col-sm-2 control-label">Abbondanza</label>
                     <div class="col-sm-10">
-                        <input type="number" name="abbondanza" class="form-control" id="inputAbbondanza" placeholder="Abbondanza in mm" min="0" max="2000" required>
+                        <input type="number" step="any" name="abbondanza" class="form-control" id="inputAbbondanza" placeholder="Abbondanza in mm" min="0" max="2000" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputTaglio" class="col-sm-2 control-label">Segni di taglio</label>
                     <div class="col-sm-10">
-                        <input type="number" name="taglio" class="form-control" id="inputTaglio" placeholder="Lunghezza segni di taglio in mm" min="0" max="2000" required>
+                        <input type="number" step="any" name="taglio" class="form-control" id="inputTaglio" placeholder="Lunghezza segni di taglio in mm" min="0" max="2000" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputMargineInterno" class="col-sm-2 control-label">Margine interno</label>
                     <div class="col-sm-10">
-                        <input type="number" name="margineInterno" class="form-control" id="inputMargineInterno" placeholder="Margine interno in mm" min="0" max="2000" required>
+                        <input type="number" step="any" name="margineInterno" class="form-control" id="inputMargineInterno" placeholder="Margine interno in mm" min="0" max="2000" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputAletta" class="col-sm-2 control-label">Larghezza alette</label>
                     <div class="col-sm-10">
-                        <input type="number" name="aletta" class="form-control" id="inputAletta" placeholder="Larghezza aletta/bandella in mm (0 se non ci sono)" min="0" max="2000" required>
+                        <input type="number" step="any" name="aletta" class="form-control" id="inputAletta" placeholder="Larghezza aletta/bandella in mm (0 se non ci sono)" min="0" max="2000" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputISBN" class="col-sm-2 control-label">ISBN</br><small>Es. 9788897192602</small></label>
-                    <div class="col-sm-10">                                                                          
-                        <input type="number" name="ISBN" class="form-control" id="inputISBN" placeholder="ISBN - EAN 13" min="9000000000000" max="9999999999999" required>
+                    <div class="col-sm-10">
+                        <input type="text" name="ISBN" class="form-control" id="inputISBN" placeholder="ISBN - EAN 13">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <div class="checkbox">
                             <label>
-                                <input name="stampaInfo" type="checkbox"> Stampa le informazioni sulle dimensioni
+                                <input name="stampaInfo" type="checkbox"> Stampa le informazioni di riepilogo
                             </label>
                         </div>
                     </div>
@@ -129,12 +130,12 @@
                     </div>
                 </div>
             </form>
-            
+
             <div class="page-header">
                 <h1>Ultime 10 copertine create</h1>
                 <p>Totale :  <?php require('SQLconta.php');
 SQLconta(); ?></p>
-            </div> 
+            </div>
 
 
             <div class="table-responsive">
@@ -163,7 +164,7 @@ SQLconta(); ?></p>
             </div>
 
             </br>
-        </div> <!-- Fine div container -->              
+        </div> <!-- Fine div container -->
 
         <footer class="footer">
             <div class="container">
