@@ -14,7 +14,7 @@ or LAMPP/XAMPP/EasyPHP
 DEMO
 ==============
 Test the site!
-[link](http://cover.archistico.com)
+[link](https://www.archistico.com/bookcover)
 
 CHANGELOG
 ==============
